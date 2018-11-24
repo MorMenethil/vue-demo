@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import moment from 'moment'
 
 // 导入vue-resource
 import VueResource from 'vue-resource'
@@ -16,7 +17,8 @@ Vue.config.productionTip = false
 import { 
   Header,
   Swipe, 
-  SwipeItem 
+  SwipeItem,
+  Button 
 } from 'mint-ui';
 
 
@@ -24,6 +26,7 @@ import {
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 
 
 // 导入mui样式
@@ -32,6 +35,11 @@ import './lib/mui/css/icons-extra.css'
 
 // 引入自己的全局样式
 import './css/common.less'
+
+// 定义全局过滤器
+Vue.filter('dateFormat',function (dateStr, pattern = 'YYYY-MM-DD HH:mm:ss') { 
+    return moment(dateStr).format(pattern)
+ })
 
 /* eslint-disable no-new */
 new Vue({
